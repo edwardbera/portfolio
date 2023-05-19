@@ -1,11 +1,14 @@
 import React, { Component, useEffect } from 'react';
 import './calculator.css';
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 
 export default function Calculator(props){
     const [output, setOutput] = React.useState('');
-    const [amount, setAmount] = React.useState([]);
-    const [count, setCount] = React.useState(0);
-
+    const amount = React.useRef([]);
+    const ops = React.useRef('');
+    const PrevOps = React.useRef('');
+   
+    
     const btnValues = [
         ["C", "+-", "%", "/"],
         [7, 8, 9, "X"],
@@ -14,41 +17,208 @@ export default function Calculator(props){
         [0, ".", "="],
       ];
 
-    function calculate(){
-     
+    function sum(){
+        
         var num = 0;
-        var size = amount.length 
-        console.log(amount)
+        var size = amount.current.length 
+        let temp ;
+        if (size === 1){
+            num = amount.current[0]
+            setOutput(num)
+        }else{
+            
+            for (let i = 0; i < size; i++){
+          
+                temp = amount.current[i].replace(",","")
+                num += parseFloat(temp)
+                console.log(temp)
+            } 
 
-        for (let i = 0; i < size; i++){
-            //console.log(amount[i])
-            //num += parseFloat(amount[i])
-        }       
-            // setOutput(num)
-       // console.log(num)
+        amount.current = []
+        amount.current.push(num)
+        setOutput(num)
+      
+        }
+
+        
+
+        
+      
     }
 
 
+    function subtract(){
+        
+        var num = 0;
+        var size = amount.current.length 
+        let temp ;
+        if (size === 1){
+            num = amount.current[0]
+            setOutput(num)
+        }else{
+            
+            for (let i = 0; i < size; i++){
+          
+                temp = amount.current[i].replace(",","")
+                num -= parseFloat(temp)
+                console.log(temp)
+            } 
+
+        amount.current = []
+        amount.current.push(num)
+        setOutput(num)
+      
+        }
+
+        
+
+        
+      
+    }
+
+    function multiply(){
+        var num =1;
+        var size = amount.current.length 
+        let temp ;
+        console.log(amount.current)
+
+        if (size === 1){
+            num = amount.current[0]
+            setOutput(num)
+        }else{
+        for (let i = 0; i < size; i++){
+          
+            temp = amount.current[i].replace(",","")
+            
+            num *= parseFloat(temp)
+        }       
+            setOutput(num)
+    }
+    }
+
+    function division(){
+        var num =1;
+        var size = amount.current.length 
+        let temp ;
+        console.log(amount.current)
+
+        if (size === 1){
+            num = amount.current[0].replace(",","")
+            setOutput(num)
+        }else{
+     
+            temp = parseFloat(amount.current[0].replace(",",""))/ parseFloat(amount.current[1].replace(",",""))
+                  
+            setOutput(temp)
+    }
+        
+    }
     function getInput(btn){
-       
+        
         if (btn === "C"){
             setOutput([]) 
-            setAmount([])
-        }else if (btn === "+"){
-            setAmount(current => [...current, output.toString() ])
+            amount.current = []
+        }else if ((btn === "+")||(btn === "X")){
+            
+           amount.current.push(output.toString())
+           ops.current = btn
+           PrevOps.current = btn
+           if(ops.current === "+"){
+            sum()
+            
+             }else if (ops.current === "X"){
+            multiply()
+            }
+
+            amount.current = []
+            amount.current.push(output.toString())
             setOutput([])
-           
         }else if(btn === "=" ){
-            setAmount(current => [...current, output.toString() ])
-         
+            
+            amount.current.push(output.toString())
+            if(ops.current === "+"){
+                sum()
+               
+            }else if (ops.current === "X"){
+                multiply()
+            }else if (ops.current === "/"){
+                division()
+            }
+        
+        }else if(btn === "%" ){
+
+            amount.current.push(parseFloat(output)*100)
+            setOutput(amount.current)
+                PrevOps.current = btn
+        }else if(btn === "-" ){
+            amount.current.push(output.toString())
+                ops.current = btn
+                PrevOps.current = btn
+        }else if(btn === "/" ){
+            ops.current = btn
+            amount.current.push(output.toString())
            
-            //calculate()
+           PrevOps.current = btn
+           division()
 
         }else{
-            setOutput(current => [...current, btn])
+
+
+            if(PrevOps.current === "+"){
+                //console.log(amount.current)
+                let a = amount.current.toString()
+                a = a.replace(',','')
+                var temp = parseFloat(a) + parseFloat(btn)
+                setOutput(temp)
+                
+                PrevOps.current = '';
+                 }else if (PrevOps.current === "X"){
+                    let a = amount.current.toString()
+                    a = a.replace(',','')
+                     temp = parseFloat(a) * parseFloat(btn)
+                    setOutput(temp)
+                    PrevOps.current = '';
+                 }else if (PrevOps.current === "%"){
+                        let a = amount.current.toString()
+                        a = a.replace(',','')
+                         temp = parseFloat(a) * 100
+                        setOutput(temp)
+                        PrevOps.current = '';
+                   
+               
+                }else if (PrevOps.current === "/"){
+                    let a = amount.current.toString()
+                    a = a.replace(',','')
+                     temp = parseFloat(a) / parseFloat(btn)
+                    setOutput(temp)
+                    PrevOps.current = '';
+               
+           
+            }else if (PrevOps.current === "-"){
+                let a = amount.current.toString()
+                a = a.replace(',','')
+                console.log(a)
+                 temp = parseFloat(a) - parseFloat(btn)
+                setOutput(temp)
+                PrevOps.current = '';
+           
+       
+        }
+                else{
+                    setOutput(current => [...current, btn])
+                }
+
+            
+            
+             
+            
+                
+            
+              
+        
        }
 
-       console.log(amount)
+       
     }
 
     const AppStyle = {
@@ -57,7 +227,7 @@ export default function Calculator(props){
        }
    
     function minimise(){
-        console.log("mini")
+        console.log(props.visibility)
         props.toggle()
     }
 

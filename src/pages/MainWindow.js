@@ -16,7 +16,7 @@ export default function MainWindow() {
   const [isWindowVisible, setWindowVisible] = React.useState('')
   const [weather, setWeather] = React.useState('')
   const [App, setApp] = React.useState('')
-  const [isAppVisible, setAppVisibility] = React.useState('')
+  const [isAppVisible, setAppVisibility] = React.useState(false)
 
 
 
@@ -29,16 +29,17 @@ export default function MainWindow() {
   }
 
   
-
-const openApp = (name)=>{
   const toggleAppVisible = () =>{
     if (isAppVisible){
       setAppVisibility(false)
       
     }else{
-      setAppVisibility(true)
+      setAppVisibility(false)
     }
 }
+
+const openApp = ()=>{
+  
   setApp(<Calculator close = {closeWindow}  visibility = {isAppVisible} toggle = {toggleAppVisible} />)
   setTask("Calculator")
   setAppVisibility(true)
@@ -101,8 +102,8 @@ const openApp = (name)=>{
       </Suspense>
       <div className='Desktop'>
       <DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='edify' link="https://legendary-crumble-1b032f.netlify.app/" />
-     { //<DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='calculator' open={openApp} />
-} 
+     {//<DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='calculator' open={openApp} />
+}
       <Tagline/>
       {App}
       </div>
