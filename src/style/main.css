@@ -73,9 +73,9 @@
 .StartMenu{
     position: absolute;
     width: 20rem;
-    height: 50vh;
+    height: 30vh;
     background-color: antiquewhite;
-    bottom: 5vh;
+    bottom: 15vh;
     
 }
 
@@ -99,26 +99,60 @@
 .StartMenu-list{
   
     list-style: none;
-    height: 40vh;
+    height: 30vh;
     background-color: var(--xpblue);
 }
 
 .StartMenu-list-item{
     padding-left: 1rem;
-    height: 10vh;
+    height: 9vh;
    
     display: flex;
     flex-direction: row;
+    
    
+}
+
+.StartMenu-list-item a{
+    text-decoration: none;
 }
 
 .StartMenu-list-item .list-item-wrapper{
     align-self: center;
+    display: flex;
+
     color: azure;
+}
+
+.StartMenu-list-item img{
+height: 5vh;
+}
+
+.StartMenu-list-item p{
+    align-self: center;
+    margin-left: 1vw;
 }
 
 .StartMenu-list-item:hover{
     background-color: var(--xplightble);
+}
+
+.ProgramList{
+position: absolute;
+margin-left: 20vw;
+width: 20vw;
+bottom: -7vh;
+background-color: var(--xpblue);
+height: 20vh;
+box-shadow: 2px 2px 0.5px rgb(0, 0, 0, 0.3) ;
+border: #C9C7BA solid 1px;
+
+}
+
+.ProgramList li{
+    padding-left: 1vw;
+    list-style: none;
+    
 }
 
 .Window{
@@ -134,11 +168,14 @@
     width: 100%;
     background-color: #3B77BC;
     display: flex;
+    justify-content: space-between;
+  
+  
 }
 
 .inner-menu{
     width: 100%;
-    height: 8vh;
+    height: 15vh;
     background-color: var(--xpbeige);
     display: flex;
     flex-direction: column;
@@ -146,8 +183,45 @@
 }
 
 .inner-menu-container{
-    height: 4vh;
+    height: 9vh;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 1vw;
+    color: #C9C7BA;
+    padding-bottom: 1vh;
+}
+
+.inner-menu-container p{
+align-self: center;
+}
+
+.inner-wrapper {
+    padding: 1%;
+    
+}
+.inner-wrapper p {
+    margin-bottom: 2%;
+}
+
+.inner-wrapper .icons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    
+}
+.WindowIcon{
+    align-self: center;
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.WindowIcon img{
+    height:9vh;
+    align-self: center;
 }
 
 .search-bar{
@@ -174,20 +248,22 @@
 }
 
 .top-menu button{
-    width: 2rem;
-    height: 2rem;
+    width: 30%;
+    height: 80%;
     align-self: center;
     margin-left: .2rem;
-    
     color: #EBEBEE;
     border: 0;
     border-radius: 15%;
 }
 
 .top-menu-buttons{
-    align-self: center;
-    margin-left: 74%;
-   width: 30%;
+
+    
+   width: 15%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
 }
 
 .top-menu .close{
@@ -204,7 +280,7 @@
 
 .top-menu h5{
     
-    width: 30%;
+    width: 20%;
     align-self: center;
     margin-left: 1%;
     color: #EBEBEE;
@@ -286,9 +362,9 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
     width: 100%;
     height: 95%;
+    padding-top: 2vh;
     
 }
 
@@ -316,7 +392,12 @@
     align-self: center;
 }
 
+.DesktopIcon a{
+    text-decoration: none;
+    color: black;
+}
 .DesktopIcon:hover{
     background-color: var(--xplightble);
     opacity: 0.8;
 }
+

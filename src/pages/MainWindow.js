@@ -8,6 +8,7 @@ import WeatherWidget from '../components/WeatherWidget';
 import DesktopIcon from '../components/DesktopIcon';
 import Tagline from '../components/Tagline';
 import PacmanWindow from '../Apps/Pacman/PacmanWindow'; 
+import Calculator from '../Apps/calculator/Calculator';
 
 export default function MainWindow() {
 
@@ -15,10 +16,9 @@ export default function MainWindow() {
   const [isWindowVisible, setWindowVisible] = React.useState('')
   const [weather, setWeather] = React.useState('')
   const [App, setApp] = React.useState('')
+  const [isAppVisible, setAppVisibility] = React.useState('')
 
-  const openApp = (name)=>{
-     setApp(<PacmanWindow/>)
-  }
+
 
   const toggleVisible = () =>{
       if (isWindowVisible){
@@ -27,6 +27,22 @@ export default function MainWindow() {
         setWindowVisible(true)
       }
   }
+
+  
+
+const openApp = (name)=>{
+  const toggleAppVisible = () =>{
+    if (isAppVisible){
+      setAppVisibility(false)
+      
+    }else{
+      setAppVisibility(true)
+    }
+}
+  setApp(<Calculator close = {closeWindow}  visibility = {isAppVisible} toggle = {toggleAppVisible} />)
+  setTask("Calculator")
+  setAppVisibility(true)
+ }
 
   const getTask = (data) => {
         setTask(data)
@@ -37,6 +53,7 @@ export default function MainWindow() {
     setTask('')
     setWindowVisible(false)
   }
+
   const successCallback = (position) => {
     console.log(position.coords.latitude, position.coords.longitude);
     
@@ -67,6 +84,7 @@ export default function MainWindow() {
    }catch(e){
     console.log(e)
    }
+   
    return 
   }
 
@@ -82,16 +100,14 @@ export default function MainWindow() {
       {weather}
       </Suspense>
       <div className='Desktop'>
-      <DesktopIcon icon ="/desktopIcons/mongo.png" title ='MongoDB' open = {openApp}/>
-      <DesktopIcon icon ="/desktopIcons/react.png" title ='React JS' open = {openApp}/>
-      <DesktopIcon icon ="/desktopIcons/nodejs_icon.png" title ='Node Js' open = {openApp}/>
-      <DesktopIcon icon ="/desktopIcons/python.png" title ='Python' open = {openApp}/>
-      <DesktopIcon icon ="/desktopIcons/pacman.png" title ='Pacman' open = {openApp}/>
+      <DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='edify' link="https://legendary-crumble-1b032f.netlify.app/" />
+     { //<DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='calculator' open={openApp} />
+} 
       <Tagline/>
       {App}
       </div>
-      <Window close = {closeWindow}  visibility = {isWindowVisible} title = {task} toggle = {toggleVisible}/>
-      <TaskBar visibility = {toggleVisible} task = {task} getTask = {getTask}/>
+      <Window close = {closeWindow}  visibility = {isWindowVisible} data = {task} toggle = {toggleVisible}/>
+      <TaskBar visibility = {toggleVisible} task = {task.title} getTask = {getTask}/>
     </div>
     
   );
