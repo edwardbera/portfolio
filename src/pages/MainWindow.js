@@ -9,6 +9,7 @@ import DesktopIcon from '../components/DesktopIcon';
 import Tagline from '../components/Tagline';
 import PacmanWindow from '../Apps/Pacman/PacmanWindow'; 
 import Calculator from '../Apps/calculator/Calculator';
+const googleapikey= process.env.REACT_APP_GKEY;
 
 export default function MainWindow() {
 
@@ -66,9 +67,8 @@ const openApp = ()=>{
   };
 
   async function getAddress(lat, long){
-   const key =  "AIzaSyAFeL76S_7YvAWfttOTtdCLZu5K33HxVDQ"
-
-   const res = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key="+ key)
+   
+   const res = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key="+ googleapikey)
 
   
     getWeather(res.data.plus_code.compound_code)
@@ -79,8 +79,6 @@ const openApp = ()=>{
     
    try{
     const res = await axios.get('http://api.weatherapi.com/v1/current.json?key=51fb9fb1bcad4441b0c213452230105&q='+city)
-    //console.log(res.data.current.condition)
-    console.log(res.data)
     setWeather(<WeatherWidget data = {res.data}/>)
    }catch(e){
     console.log(e)

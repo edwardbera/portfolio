@@ -3,7 +3,7 @@ import {faArrowRight,faFolder,  faQuestion} from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from "axios";
 import ListItem from './ListItem';
-
+const projecturl= process.env.REACT_APP_GETPROJECTS;
 
 export default function StartMenu(props){
     const [open, setOpen] = React.useState(false)
@@ -29,7 +29,7 @@ export default function StartMenu(props){
 
        async function getProject(){
 
-        await axios.get('http://localhost:8000/getProjects', {
+        await axios.get(projecturl, {
 
         },).then((response)=>{
             const projectdata = response.data.map((data)=>{
