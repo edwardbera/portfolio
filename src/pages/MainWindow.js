@@ -84,7 +84,7 @@ const openApp = ()=>{
     console.log(e)
    }
    
-   return 
+   return weather
   }
 
   React.useEffect(()=>{
