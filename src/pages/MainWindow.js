@@ -78,7 +78,7 @@ const openApp = ()=>{
 
     
    try{
-    const res = await axios.get('http://api.weatherapi.com/v1/current.json?key=51fb9fb1bcad4441b0c213452230105&q='+city)
+    const res = await axios.get('https://api.weatherapi.com/v1/current.json?key=51fb9fb1bcad4441b0c213452230105&q='+city)
     setWeather(<WeatherWidget data = {res.data}/>)
    }catch(e){
     console.log(e)
