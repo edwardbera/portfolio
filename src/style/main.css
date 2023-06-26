@@ -91,6 +91,9 @@
     width: 4rem;
     height: 4rem;
     background-color: azure;
+    background-image: url("/public/avatar.png");
+    background-repeat:no-repeat ;
+    background-size: cover;
     border-radius: 1rem;
     align-self: center;
     margin-left: 1rem;
@@ -301,7 +304,7 @@ align-self: center;
 
 .Widget{
     position: absolute;
-    height: 30vh;
+    height: fit-content;
     width: 20vw;
     background-color: #292b2e;
     right: 1%;
@@ -401,3 +404,115 @@ align-self: center;
     opacity: 0.8;
 }
 
+.HeaderText{
+
+    position: absolute;
+    height: 10vh;
+    width: 40vw;
+    align-self: center;
+    color:#ffffff;
+    font-style: italic;
+    margin-top: 15%;
+    text-shadow: 2px 2px #292b2e;
+
+
+
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .HeaderText{
+
+        position: absolute;
+        height: 10vh;
+        width: 90vw;
+        align-self: center;
+        color:#ffffff;
+        font-size: small;
+        font-style: italic;
+        bottom: 30%;
+        text-shadow: 2px 2px #292b2e;
+    
+    
+    
+    }
+    
+    .Widget{
+        position: absolute;
+        height: fit-content;
+        width: 90vw;
+        background-color: #292b2e;
+        right: 1%;
+        top: 2%;
+        border-radius: 5%;
+        padding: 2%;
+        color: #C9C7BA;
+        box-shadow: inset 0px 3px 5px #C9C7BA;
+        
+        z-index: 0;
+    }
+
+    .DesktopIcon{
+        visibility: hidden;
+    }
+    
+    .TaskBar{
+        background-color: var(--xpblue);
+        height: 10vh;
+        width: 100vw;
+        align-self: flex-end;
+        display: grid;
+        grid-template-columns: 1fr 7fr 2fr;
+        box-shadow: inset 2px 2px 0.5px rgb(0, 0, 0, 0.3) ;
+    }
+
+    .Desktop .Tagline{
+        position: absolute;
+        bottom: 10%;
+        right: 2%;
+        color: #EBEBEE;
+        font-size: larger;
+    }
+
+    .TaskBar{
+        background-color: var(--xpblue);
+        height: 5vh;
+        width: 100vw;
+        align-self: flex-end;
+        display: grid;
+        grid-template-columns: 1fr 7fr 5fr;
+        box-shadow: inset 2px 2px 0.5px rgb(0, 0, 0, 0.3) ;
+    }
+    
+    .StartMenuButton{
+        background-color:var(--xpgreen);
+        box-shadow: inset 0px 0px 1px 2px rgb(0, 0, 0, 0.5) ;
+        width: 8rem;
+        height:5vh;
+        text-align: center;
+        display: flex;
+        border-radius: 0 1.5rem 0 0;
+    }
+
+    .TaskBarEnd{
+        align-self: flex-end;
+        width: 99%;
+        height: 5vh;
+        color: white;
+        background-color: var(--xplightble) ;
+        border-left: rgba(0, 0, 0, 0.464) solid 0.1rem;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .top-menu-buttons{
+
+    
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+     }
+  }

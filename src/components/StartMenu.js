@@ -11,7 +11,7 @@ export default function StartMenu(props){
     const [about, setAbout] = React.useState({"title" : "About",
     "icon" : "https://i.ibb.co/WPKDrQ4/edify-logo-2.png",
     "link" : "https://legendary-crumble-1b032f.netlify.app/",
-    "description" : "Hi, I am Edward Bera. I am a full stack web developer and software engineer. ",
+    "description" : "Hi, I am Edward Bera a full stack web developer and software engineer. My expertise is developing websites and web applications including full frontend design. ",
     "stack" : [
         {"title" : "Node JS",  "url" : "https://i.ibb.co/GFY7z2d/nodejs-icon.png"},
         {"title" : "MongoDB",  "url" : "https://i.ibb.co/yBYRj0b/mongo.png"},
@@ -60,7 +60,9 @@ export default function StartMenu(props){
 
         <div className='StartMenu' style = {menuStyle}>
             <div className='StartMenu-header'>
-                <div className='StartMenu-DP'></div>
+                <div className='StartMenu-DP'>
+                   
+                </div>
             </div>
             <ul className='StartMenu-list'>
                 
@@ -75,21 +77,14 @@ export default function StartMenu(props){
                     </div>
                     </a>
                 </li>
-                <li className='StartMenu-list-item' onMouseEnter={() => setOpen(true)}>
-                <div className='list-item-wrapper'>
-                        <p> <FontAwesomeIcon icon={faArrowRight}/> All Projects</p>
-                    </div>
-                </li>
+                {projects}
+                
                 
 
             </ul>
 
-           {open && (<ul className='ProgramList'  onMouseLeave={() => setOpen(false)}>
-
-            
-                {projects}
-                
-            </ul>)}
+           
+           
 
         </div>
 

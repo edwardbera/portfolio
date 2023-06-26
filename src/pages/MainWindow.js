@@ -9,6 +9,7 @@ import DesktopIcon from '../components/DesktopIcon';
 import Tagline from '../components/Tagline';
 import PacmanWindow from '../Apps/Pacman/PacmanWindow'; 
 import Calculator from '../Apps/calculator/Calculator';
+import HeaderText from '../components/HeaderText';
 const googleapikey= process.env.REACT_APP_GKEY;
 
 export default function MainWindow() {
@@ -18,7 +19,16 @@ export default function MainWindow() {
   const [weather, setWeather] = React.useState('')
   const [App, setApp] = React.useState('')
   const [isAppVisible, setAppVisibility] = React.useState(false)
-
+  const [about, setAbout] = React.useState({"title" : "About",
+    "icon" : "https://i.ibb.co/WPKDrQ4/edify-logo-2.png",
+    "link" : "https://legendary-crumble-1b032f.netlify.app/",
+    "description" : "Hi, I am Edward Bera a full stack web developer and software engineer. My expertise is developing websites and web applications including full frontend design. ",
+    "stack" : [
+        {"title" : "Node JS",  "url" : "https://i.ibb.co/GFY7z2d/nodejs-icon.png"},
+        {"title" : "MongoDB",  "url" : "https://i.ibb.co/yBYRj0b/mongo.png"},
+        {"title" : "React JS",  "url" : "https://i.ibb.co/GP1yCDx/react.png"},
+        {"title" : "Python",  "url" : "https://i.ibb.co/Vxv6s60/python.png"}
+    ]})
 
 
   const toggleVisible = () =>{
@@ -89,8 +99,8 @@ const openApp = ()=>{
 
   React.useEffect(()=>{
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
-    
-  },[])
+    setApp(HeaderText)
+     },[])
 
   return (
     
@@ -104,6 +114,8 @@ const openApp = ()=>{
 }
       <Tagline/>
       {App}
+       <Window close = {closeWindow}  visibility = {isWindowVisible} data = {about} toggle = {toggleVisible}/>
+ 
       </div>
       <Window close = {closeWindow}  visibility = {isWindowVisible} data = {task} toggle = {toggleVisible}/>
       <TaskBar visibility = {toggleVisible} task = {task.title} getTask = {getTask}/>
