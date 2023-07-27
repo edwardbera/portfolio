@@ -420,6 +420,17 @@ align-self: center;
 }
 
 @media only screen and (max-width: 600px) {
+
+
+.App{
+    height: 100vh; 
+    width: 100vw;
+    background-image: url("background.jpg");
+   display: flex;
+   background-repeat: no-repeat;
+   background-size: cover;
+   overflow: hidden;
+}
     
     .HeaderText{
 
@@ -430,11 +441,8 @@ align-self: center;
         color:#ffffff;
         font-size: small;
         font-style: italic;
-        bottom: 30%;
+        top: 20%;
         text-shadow: 2px 2px #292b2e;
-    
-    
-    
     }
     
     .Widget{
@@ -443,7 +451,7 @@ align-self: center;
         width: 90vw;
         background-color: #292b2e;
         right: 1%;
-        top: 2%;
+        top: 0%;
         border-radius: 5%;
         padding: 2%;
         color: #C9C7BA;
@@ -456,16 +464,7 @@ align-self: center;
         visibility: hidden;
     }
     
-    .TaskBar{
-        background-color: var(--xpblue);
-        height: 10vh;
-        width: 100vw;
-        align-self: flex-end;
-        display: grid;
-        grid-template-columns: 1fr 7fr 2fr;
-        box-shadow: inset 2px 2px 0.5px rgb(0, 0, 0, 0.3) ;
-    }
-
+    
     .Desktop .Tagline{
         position: absolute;
         bottom: 10%;
@@ -480,7 +479,7 @@ align-self: center;
         width: 100vw;
         align-self: flex-end;
         display: grid;
-        grid-template-columns: 1fr 7fr 5fr;
+        grid-template-columns: 1fr 1fr 5fr;
         box-shadow: inset 2px 2px 0.5px rgb(0, 0, 0, 0.3) ;
     }
     
@@ -515,4 +514,24 @@ align-self: center;
         display: flex;
         justify-content: center;
      }
+
+
+     .TaskBarEnd{
+        align-self: flex-end;
+        width: 99%;
+        height: 100%;
+        color: white;
+        background-color: var(--xplightble) ;
+        border-left: rgba(0, 0, 0, 0.464) solid 0.1rem;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .TaskBarEnd .taskbarend-icon{
+        align-self: flex-end;
+        justify-self: center;
+        padding: 0.5rem;
+    }
   }

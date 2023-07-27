@@ -7,7 +7,6 @@ import axios from 'axios';
 import WeatherWidget from '../components/WeatherWidget';
 import DesktopIcon from '../components/DesktopIcon';
 import Tagline from '../components/Tagline';
-import PacmanWindow from '../Apps/Pacman/PacmanWindow'; 
 import Calculator from '../Apps/calculator/Calculator';
 import HeaderText from '../components/HeaderText';
 const googleapikey= process.env.REACT_APP_GKEY;
