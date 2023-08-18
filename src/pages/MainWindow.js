@@ -29,7 +29,6 @@ export default function MainWindow() {
         {"title" : "Python",  "url" : "https://i.ibb.co/Vxv6s60/python.png"}
     ]})
 
-
   const toggleVisible = () =>{
       if (isWindowVisible){
         setWindowVisible(false)
@@ -87,7 +86,7 @@ const openApp = ()=>{
 
     
    try{
-    const res = await axios.get('https://api.weatherapi.com/v1/current.json?key=51fb9fb1bcad4441b0c213452230105&q='+city)
+    const res = await axios.get('https://api.weatherapi.com/v1/current.json?key=51fb9fb1bcad4441b0c213452230105&q=bulawayo')
     setWeather(<WeatherWidget data = {res.data}/>)
    }catch(e){
     console.log(e)
@@ -109,8 +108,8 @@ const openApp = ()=>{
       </Suspense>
       <div className='Desktop'>
       <DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='edify' link="https://legendary-crumble-1b032f.netlify.app/" />
-     {//<DesktopIcon icon ="https://i.ibb.co/qChCk0c/ico-logo.png" title ='calculator' open={openApp} />
-}
+     <DesktopIcon icon ="https://i.ibb.co/7KJqb4C/cloudy.png" title ='Weather App' link="https://main--vocal-kringle-c75e1a.netlify.app/"/>
+
       <Tagline/>
       {App}
        <Window close = {closeWindow}  visibility = {isWindowVisible} data = {about} toggle = {toggleVisible}/>
